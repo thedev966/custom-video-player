@@ -135,11 +135,13 @@
 
 /* Slider label css */
 
-.PrivateValueLabel-offset-3 {
+.PrivateValueLabel-offset-3,
+.jss3 {
   font-size: 0.6rem !important;
 }
 
-.PrivateValueLabel-circle-4 {
+.PrivateValueLabel-circle-4,
+.jss4 {
   width: 34px !important;
   height: 28px !important;
   transform: rotate(0) !important;
@@ -147,7 +149,8 @@
   background-color: rgba(0, 0, 0, 0.4) !important;
 }
 
-.PrivateValueLabel-label-5 {
+.PrivateValueLabel-label-5,
+.jss5 {
   transform: rotate(0) !important;
 }
 
