@@ -11,6 +11,7 @@ import SettingsIcon from "@material-ui/icons/Settings";
 import FullscreenIcon from "@material-ui/icons/Fullscreen";
 import PauseIcon from "@material-ui/icons/Pause";
 import screenfull from "screenfull";
+import Popover from "@material-ui/core/Popover";
 
 const Player = () => {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -22,6 +23,10 @@ const Player = () => {
   const playerRef = useRef();
   const playerContainerRef = useRef();
   const playerControlsRef = useRef();
+  const [isOpenedSettings, setIsOpenedSettings] = useState(false);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const speedValues = ["1x", "2x", "4x", "8x"];
+  const [currentSpeedIndex, setCurrentSpeedIndex] = useState(0);
 
   function formatLabelTime(value) {
     let timeInSeconds = playedSeconds;
@@ -93,6 +98,29 @@ const Player = () => {
     playerControlsRef.current.style.visibility = "hidden";
   };
 
+  const openSettings = (e) => {
+    if (!isOpenedSettings) {
+      setAnchorEl(e.target);
+      setIsOpenedSettings(true);
+    } else {
+      setAnchorEl(null);
+      setIsOpenedSettings(false);
+    }
+  };
+
+  const handleCloseSettings = () => {
+    setAnchorEl(null);
+    setIsOpenedSettings(false);
+  };
+
+  const handleSpeedChange = () => {
+    if (currentSpeedIndex + 1 === speedValues.length) {
+      setCurrentSpeedIndex(0);
+    } else {
+      setCurrentSpeedIndex(currentSpeedIndex + 1);
+    }
+  };
+
   return (
     <div
       className="playerWrapper"
@@ -108,8 +136,9 @@ const Player = () => {
         width="100%"
         height="100%"
         volume={volume}
+        playbackRate={parseInt(speedValues[currentSpeedIndex].substring(0, 1))}
         pip={false}
-        config={{ file: { attributes: { disablepictureinpicture: "true" } } }}
+        config={{ file: { attributes: { disablePictureInPicture: true } } }}
         onProgress={handleProgress}
         onEnded={handleEnded}
       />
@@ -182,11 +211,47 @@ const Player = () => {
                   />
                 </div>
                 <div className="display">
-                  <SettingsIcon classes={{ root: "settingsIcon" }} />
+                  <SettingsIcon
+                    classes={{ root: "settingsIcon" }}
+                    onClick={openSettings}
+                  />
                   <FullscreenIcon
                     classes={{ root: "fullScreenIcon" }}
                     onClick={handleToggleFullScreen}
                   />
+                  <Popover
+                    open={isOpenedSettings}
+                    anchorEl={anchorEl}
+                    anchorOrigin={{
+                      vertical: "top",
+                      horizontal: "left",
+                    }}
+                    transformOrigin={{
+                      vertical: "bottom",
+                      horizontal: "center",
+                    }}
+                    onClose={handleCloseSettings}
+                    classes={{
+                      root: "settingsPopover-root",
+                      paper: "settingsPopover-paper",
+                    }}
+                    marginThreshold={20}
+                  >
+                    <p className="settingsPopover__speedLabel">
+                      Speed:{" "}
+                      <span
+                        className="settingsPopover__speed"
+                        onClick={handleSpeedChange}
+                      >
+                        {speedValues[currentSpeedIndex]}
+                      </span>
+                    </p>
+
+                    <p className="settingsPopover__qualityLabel">
+                      Quality:{" "}
+                      <span className="settingsPopover__quality">HD</span>
+                    </p>
+                  </Popover>
                 </div>
               </div>
             </div>

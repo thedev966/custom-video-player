@@ -187,3 +187,37 @@
   margin-left: 25px !important;
   font-size: 1.3rem !important;
 }
+
+.settingsPopover-root {
+  z-index: unset !important;
+}
+
+.settingsPopover-paper {
+  overflow-x: unset !important;
+  overflow-y: unset !important;
+  max-width: unset !important;
+  max-height: unset !important;
+  min-width: unset !important;
+  min-height: unset !important;
+  background-color: rgba(255, 255, 255, 0.3) !important;
+  transform: translate(4px, -40px) !important;
+  padding: 5px 12px;
+}
+
+.settingsPopover__speedLabel,
+.settingsPopover__qualityLabel {
+  font-size: 13px;
+  font-weight: 500;
+  margin: 5px 0 5px 0;
+  font-family: Roboto, sans-serif;
+}
+
+.settingsPopover__speed,
+.settingsPopover__quality {
+  font-size: 13px;
+  font-weight: 700;
+  text-shadow: rgba(0, 0, 0, 0.4);
+  color: rgb(244, 244, 38);
+  cursor: pointer;
+  padding-left: 4px;
+}
