@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import ReactPlayer from "react-player";
 import "../Player.css";
 import Slider from "@material-ui/core/Slider";
@@ -9,9 +9,17 @@ import FastForwardOutlinedIcon from "@material-ui/icons/FastForward";
 import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import SettingsIcon from "@material-ui/icons/Settings";
 import FullscreenIcon from "@material-ui/icons/Fullscreen";
+import FullscreenExitIcon from "@material-ui/icons/FullscreenExit";
 import PauseIcon from "@material-ui/icons/Pause";
 import screenfull from "screenfull";
 import Popover from "@material-ui/core/Popover";
+
+const videoPaths = {
+  SD:
+    "https://r4---sn-c0q7lnly.googlevideo.com/videoplayback?expire=1620167831&ei=N3iRYPOfKYqFyQWS5amYCQ&ip=2a0b%3A1580%3Ad96f%3Aeb01%3Aff90%3A4267%3A1da2%3A141b&id=o-AC8bP26STCPKjgfyUydj8ztHViFQGhJeBKPnDxJclWwy&itag=18&source=youtube&requiressl=yes&vprv=1&mime=video%2Fmp4&ns=hrBznGwLgoH9qx63rYVf2lgF&gir=yes&clen=12659459&ratebypass=yes&dur=192.818&lmt=1613371959597493&fvip=6&fexp=24001373,24007246&c=WEB&txp=5430432&n=E9JpLLfyIZWLgBSvFdc&sparams=expire%2Cei%2Cip%2Cid%2Citag%2Csource%2Crequiressl%2Cvprv%2Cmime%2Cns%2Cgir%2Cclen%2Cratebypass%2Cdur%2Clmt&sig=AOq0QJ8wRQIgaZMtmpR1Np7xYIGhcR1j5o7BwS06tbSGmnda_HpYnRwCIQCJXAQ0M0RQZdoMn4MHdisO7lYwHdYbH0VbuGqALDwrDg%3D%3D&redirect_counter=1&cm2rm=sn-ncc-nwwl7e&req_id=9eb5d2b7fb0a3ee&cms_redirect=yes&mh=Q9&mip=77.77.222.132&mm=29&mn=sn-c0q7lnly&ms=rdu&mt=1620145975&mv=m&mvi=4&pl=23&lsparams=mh,mip,mm,mn,ms,mv,mvi,pl&lsig=AG3C_xAwRAIgPXSL2YaE1YJURARiWClc4NPm9K9ZCyyUjFo-PdUiErgCIGZ7yGiYcbi6eCOJaotDBduws-_2kNMyKQzNTQSNX_K9",
+  HD:
+    "https://r6---sn-4g5edn7y.googlevideo.com/videoplayback?expire=1620167831&ei=N3iRYPOfKYqFyQWS5amYCQ&ip=2a0b%3A1580%3Ad96f%3Aeb01%3Aff90%3A4267%3A1da2%3A141b&id=o-AC8bP26STCPKjgfyUydj8ztHViFQGhJeBKPnDxJclWwy&itag=22&source=youtube&requiressl=yes&vprv=1&mime=video%2Fmp4&ns=hrBznGwLgoH9qx63rYVf2lgF&cnr=14&ratebypass=yes&dur=192.818&lmt=1613372275619259&fvip=6&fexp=24001373,24007246&c=WEB&txp=5432432&n=E9JpLLfyIZWLgBSvFdc&sparams=expire%2Cei%2Cip%2Cid%2Citag%2Csource%2Crequiressl%2Cvprv%2Cmime%2Cns%2Ccnr%2Cratebypass%2Cdur%2Clmt&sig=AOq0QJ8wRQIgZcyTzRo-rHUNU8WsX46SpLidW8r-JaTHmynWhpHgFZgCIQD6q8intR8BFv3xkWlBiYSWINBNlPc1jeJGUjyPMj1zVg%3D%3D&cm2rm=sn-ncc-nwwl7e,sn-c0qlk7z&req_id=83bea6f67cc8a3ee&redirect_counter=2&cms_redirect=yes&mh=Q9&mip=77.77.222.132&mm=34&mn=sn-4g5edn7y&ms=ltu&mt=1620146193&mv=m&mvi=6&pl=23&lsparams=mh,mip,mm,mn,ms,mv,mvi,pl&lsig=AG3C_xAwRQIhAIkn1cGmWKDa21hQ6Bq_2SClHukdB8ueb5qU30CzwaIKAiAPwNBioN7G41y49ZNSQzsohWsXIK9Ox2LyHsP1wgaSPg%3D%3D",
+};
 
 const Player = () => {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -27,6 +35,18 @@ const Player = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const speedValues = ["1x", "2x", "4x", "8x"];
   const [currentSpeedIndex, setCurrentSpeedIndex] = useState(0);
+  const qualityValues = ["SD", "HD"];
+  const [currentQualityIndex, setCurrentQualityIndex] = useState(0);
+  const [isFullscreen, setIsFullscreen] = useState(false);
+  const [currentTimeOnQualityChange, setCurrentTimeOnQualityChange] = useState(
+    0
+  );
+
+  useEffect(() => {
+    // when user changes video quality, seek to the time where the video was left off
+    if (currentTimeOnQualityChange > 0)
+      playerRef.current.seekTo(currentTimeOnQualityChange);
+  }, [currentQualityIndex]);
 
   function formatLabelTime(value) {
     let timeInSeconds = playedSeconds;
@@ -63,6 +83,11 @@ const Player = () => {
 
   const handleToggleFullScreen = () => {
     screenfull.toggle(playerContainerRef.current);
+    if (isFullscreen) {
+      setIsFullscreen(false);
+    } else {
+      setIsFullscreen(true);
+    }
   };
 
   const handleProgress = (currentProgress) => {
@@ -102,6 +127,7 @@ const Player = () => {
     if (!isOpenedSettings) {
       setAnchorEl(e.target);
       setIsOpenedSettings(true);
+      document.querySelector(".playerWrapper").style.paddingRight = "0px";
     } else {
       setAnchorEl(null);
       setIsOpenedSettings(false);
@@ -121,6 +147,18 @@ const Player = () => {
     }
   };
 
+  const handleQualityChange = () => {
+    const played = playedSeconds;
+
+    if (currentQualityIndex + 1 === qualityValues.length) {
+      setCurrentQualityIndex(0);
+    } else {
+      setCurrentQualityIndex(currentQualityIndex + 1);
+    }
+
+    setCurrentTimeOnQualityChange(played);
+  };
+
   return (
     <div
       className="playerWrapper"
@@ -130,7 +168,11 @@ const Player = () => {
     >
       <ReactPlayer
         ref={playerRef}
-        url="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+        url={
+          qualityValues[currentQualityIndex] === "SD"
+            ? videoPaths.SD
+            : videoPaths.HD
+        }
         playing={isPlaying}
         muted={isMuted}
         width="100%"
@@ -138,14 +180,22 @@ const Player = () => {
         volume={volume}
         playbackRate={parseInt(speedValues[currentSpeedIndex].substring(0, 1))}
         pip={false}
-        config={{ file: { attributes: { disablePictureInPicture: true } } }}
+        config={{
+          file: {
+            attributes: {
+              disablePictureInPicture: true,
+            },
+          },
+        }}
         onProgress={handleProgress}
         onEnded={handleEnded}
       />
       <div className="playerControls" ref={playerControlsRef}>
         <div className="videoInfo">
-          <h3 className="video_title">Big Buck Bunny</h3>
-          <h3 className="video_author">Blender Foundation</h3>
+          <h3 className="video_title">
+            4K African Wildlife | African Nature Showreel 2017
+          </h3>
+          <h3 className="video_author">Robert Hofmeyr</h3>
         </div>
         <div className="actionControls">
           <div className="actionControls-content">
@@ -215,10 +265,18 @@ const Player = () => {
                     classes={{ root: "settingsIcon" }}
                     onClick={openSettings}
                   />
-                  <FullscreenIcon
-                    classes={{ root: "fullScreenIcon" }}
-                    onClick={handleToggleFullScreen}
-                  />
+                  {isFullscreen ? (
+                    <FullscreenExitIcon
+                      classes={{ root: "fullScreenIcon" }}
+                      onClick={handleToggleFullScreen}
+                    />
+                  ) : (
+                    <FullscreenIcon
+                      classes={{ root: "fullScreenIcon" }}
+                      onClick={handleToggleFullScreen}
+                    />
+                  )}
+
                   <Popover
                     open={isOpenedSettings}
                     anchorEl={anchorEl}
@@ -235,7 +293,8 @@ const Player = () => {
                       root: "settingsPopover-root",
                       paper: "settingsPopover-paper",
                     }}
-                    marginThreshold={20}
+                    container={playerContainerRef.current}
+                    disableScrollLock={true}
                   >
                     <p className="settingsPopover__speedLabel">
                       Speed:{" "}
@@ -249,7 +308,12 @@ const Player = () => {
 
                     <p className="settingsPopover__qualityLabel">
                       Quality:{" "}
-                      <span className="settingsPopover__quality">HD</span>
+                      <span
+                        className="settingsPopover__quality"
+                        onClick={handleQualityChange}
+                      >
+                        {qualityValues[currentQualityIndex]}
+                      </span>
                     </p>
                   </Popover>
                 </div>
