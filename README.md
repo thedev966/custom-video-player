@@ -6,5 +6,4 @@ Credits: Salko a.k.a Dev
 
 TODO:
 
-- Fullscreen improvements
 - Make video player responsive

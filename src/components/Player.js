@@ -16,9 +16,9 @@ import Popover from "@material-ui/core/Popover";
 
 const videoPaths = {
   SD:
-    "https://r1---sn-ncc-nwwl.googlevideo.com/videoplayback?expire=1620253033&ei=CcWSYP_OJ4OBpATno5nACw&ip=2a0b%3A1580%3Ad96f%3Aeb01%3Aff90%3A4267%3A1da2%3A141b&id=o-ALcwLCLpn_TzLm27BT2-zEGEFU-6bvI6sydvKxPOxgTy&itag=18&source=youtube&requiressl=yes&vprv=1&mime=video%2Fmp4&ns=7XeCrBFrz9Jt1wvFRkaUaFYF&gir=yes&clen=12659459&ratebypass=yes&dur=192.818&lmt=1613371959597493&fvip=6&fexp=24001373%2C24007246&c=WEB&txp=5430432&n=CjN5O_PY6S2S4y5Z&sparams=expire%2Cei%2Cip%2Cid%2Citag%2Csource%2Crequiressl%2Cvprv%2Cmime%2Cns%2Cgir%2Cclen%2Cratebypass%2Cdur%2Clmt&sig=AOq0QJ8wRgIhAOgTJh995nkDSBRU9j3aliEmj0oQxd_l46FMlbhVurWVAiEA5KxvRk0mos4wzN7j4zq0eLaZg5BxA_5FQvAQHCb-o3E%3D&cms_redirect=yes&mh=Q9&mip=77.77.222.132&mm=31&mn=sn-ncc-nwwl&ms=au&mt=1620230683&mv=m&mvi=1&pl=23&lsparams=mh,mip,mm,mn,ms,mv,mvi,pl&lsig=AG3C_xAwRQIhAOUUi-buTKrQ3CIpMkZYCtoqIUpSSRsf1VZyJ3xKlDtiAiBeDXYZfsxCV2Ya4lYfWP75Ak91MKbMMGnTRyN4V3r6dA%3D%3D",
+    "https://r3---sn-ncc-nwwe.googlevideo.com/videoplayback?expire=1620416506&ei=mkOVYPaeC4q5yAX4yInAAQ&ip=2a0b%3A1580%3Ad96f%3Aeb01%3Aff90%3A4267%3A1da2%3A141b&id=o-AFxxQ6FpZs1ItNk-C1PPXyaVjVC985Wa4yce-knUXVvq&itag=18&source=youtube&requiressl=yes&vprv=1&mime=video%2Fmp4&ns=pk-y1DM5Vwc7fS2I6F_8D9cF&gir=yes&clen=13315531&ratebypass=yes&dur=166.138&lmt=1499793535138046&fexp=24001373%2C24007246&c=WEB&n=CbVal2v8AbW3SYIYPlK&sparams=expire%2Cei%2Cip%2Cid%2Citag%2Csource%2Crequiressl%2Cvprv%2Cmime%2Cns%2Cgir%2Cclen%2Cratebypass%2Cdur%2Clmt&sig=AOq0QJ8wRQIhANpUfGw0v_x_SSwLEWefyibsWUlcvzLpi52cYL2nRLLUAiBKTWlTBiv4mh7Y1RvIincrZOtmmlasOXHWXzNwczTUCQ%3D%3D&cms_redirect=yes&mh=a0&mip=77.77.222.132&mm=31&mn=sn-ncc-nwwe&ms=au&mt=1620394623&mv=m&mvi=3&pl=23&lsparams=mh,mip,mm,mn,ms,mv,mvi,pl&lsig=AG3C_xAwRQIgNGlvmW5DSdX6mvFa5VbMa289rJUsPtNizBue4JupOhICIQDWOK5mvbkTVAhe-d8EpZC6bRrp8iRpIGoi-qAm1hZ_JQ%3D%3D",
   HD:
-    "https://r1---sn-ncc-nwwl.googlevideo.com/videoplayback?expire=1620253033&ei=CcWSYP_OJ4OBpATno5nACw&ip=2a0b%3A1580%3Ad96f%3Aeb01%3Aff90%3A4267%3A1da2%3A141b&id=o-ALcwLCLpn_TzLm27BT2-zEGEFU-6bvI6sydvKxPOxgTy&itag=22&source=youtube&requiressl=yes&vprv=1&mime=video%2Fmp4&ns=7XeCrBFrz9Jt1wvFRkaUaFYF&cnr=14&ratebypass=yes&dur=192.818&lmt=1613372275619259&fvip=6&fexp=24001373%2C24007246&c=WEB&txp=5432432&n=CjN5O_PY6S2S4y5Z&sparams=expire%2Cei%2Cip%2Cid%2Citag%2Csource%2Crequiressl%2Cvprv%2Cmime%2Cns%2Ccnr%2Cratebypass%2Cdur%2Clmt&sig=AOq0QJ8wRQIgJYvUFaSM79HpmETKdNegGJtzvJXbUVY6VCXekj6whV4CIQCFMEyU33xpBfGywXS7vpDd0yWLf4vAwhLJEn4rXsmA0g%3D%3D&cms_redirect=yes&mh=Q9&mip=77.77.222.132&mm=31&mn=sn-ncc-nwwl&ms=au&mt=1620230683&mv=m&mvi=1&pl=23&lsparams=mh,mip,mm,mn,ms,mv,mvi,pl&lsig=AG3C_xAwRQIgElLEXqRhxFddx3M9phKf-34cLvjG3gSt2X5vxpHuczMCIQCe6coxOLDgcXJ91NWL5tpDehnOx5y2e1AzylYmzx47pw%3D%3D",
+    "https://r3---sn-ncc-nwwe.googlevideo.com/videoplayback?expire=1620416506&ei=mkOVYPaeC4q5yAX4yInAAQ&ip=2a0b%3A1580%3Ad96f%3Aeb01%3Aff90%3A4267%3A1da2%3A141b&id=o-AFxxQ6FpZs1ItNk-C1PPXyaVjVC985Wa4yce-knUXVvq&itag=22&source=youtube&requiressl=yes&vprv=1&mime=video%2Fmp4&ns=pk-y1DM5Vwc7fS2I6F_8D9cF&cnr=14&ratebypass=yes&dur=166.138&lmt=1499793654044438&fexp=24001373%2C24007246&c=WEB&n=CbVal2v8AbW3SYIYPlK&sparams=expire%2Cei%2Cip%2Cid%2Citag%2Csource%2Crequiressl%2Cvprv%2Cmime%2Cns%2Ccnr%2Cratebypass%2Cdur%2Clmt&sig=AOq0QJ8wRQIgPyPyk3rQ1Z92QF_3aE0kfb3sKi4KNmmyiHl13bMUhhQCIQDLCgsZX_EaBQYBp4bvBjyhqLMQZlTmJA5Sjbv3plFtZw%3D%3D&cms_redirect=yes&mh=a0&mip=77.77.222.132&mm=31&mn=sn-ncc-nwwe&ms=au&mt=1620394623&mv=m&mvi=3&pl=23&lsparams=mh,mip,mm,mn,ms,mv,mvi,pl&lsig=AG3C_xAwRgIhAKq-uKkEDN8oaPwAKlL2LmAZvWCbiVnOO7CY4svf8Z6xAiEA-8ST9o37BOdAyzyAY1YWAOjA-sfSXUIh2ZYH48ueAiw%3D",
 };
 
 const Player = () => {
@@ -31,6 +31,7 @@ const Player = () => {
   const playerRef = useRef();
   const playerContainerRef = useRef();
   const playerControlsRef = useRef();
+  const [isOpenedControls, setIsOpenedControls] = useState(false);
   const [isOpenedSettings, setIsOpenedSettings] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
   const speedValues = ["1x", "2x", "4x", "8x"];
@@ -47,6 +48,32 @@ const Player = () => {
     if (currentTimeOnQualityChange > 0)
       playerRef.current.seekTo(currentTimeOnQualityChange);
   }, [currentQualityIndex]);
+
+  useEffect(() => {
+    // hide pointer and controls if inactive for 2 seconds in full screen mode
+    if (isFullscreen) {
+      let timer;
+      window.addEventListener("mousemove", function () {
+        clearTimeout(timer);
+        timer = setTimeout(() => {
+          setIsOpenedSettings(false);
+          setIsOpenedControls(false);
+          document.body.style.cursor = "none";
+        }, 3000);
+        document.body.style.cursor = "default";
+        setIsOpenedControls(true);
+      });
+    }
+  }, [isFullscreen]);
+
+  useEffect(() => {
+    document.onkeydown = (e) => {
+      if (e.code === "Space") {
+        // space clicked, play the video
+        handlePlayPause();
+      }
+    };
+  }, [isPlaying]);
 
   function formatLabelTime(value) {
     let timeInSeconds = playedSeconds;
@@ -116,11 +143,11 @@ const Player = () => {
   };
 
   const showPlayerControls = () => {
-    playerControlsRef.current.style.visibility = "visible";
+    !isFullscreen && setIsOpenedControls(true);
   };
 
   const hidePlayerControls = () => {
-    playerControlsRef.current.style.visibility = "hidden";
+    !isFullscreen && setIsOpenedControls(false);
   };
 
   const openSettings = (e) => {
@@ -190,12 +217,28 @@ const Player = () => {
         onProgress={handleProgress}
         onEnded={handleEnded}
       />
-      <div className="playerControls" ref={playerControlsRef}>
+      <div
+        className="playerControls"
+        ref={playerControlsRef}
+        style={
+          isOpenedControls
+            ? { visibility: "visible" }
+            : { visibility: "hidden" }
+        }
+      >
         <div className="videoInfo">
-          <h3 className="video_title">
-            4K African Wildlife | African Nature Showreel 2017
+          <h3
+            className="video_title"
+            style={isFullscreen ? { fontSize: "1.25rem" } : null}
+          >
+            Thoreau at 200: Reflections on "Walden"
           </h3>
-          <h3 className="video_author">Robert Hofmeyr</h3>
+          <h3
+            className="video_author"
+            style={isFullscreen ? { fontSize: "11px" } : null}
+          >
+            Harvard University
+          </h3>
         </div>
         <div className="actionControls">
           <div className="actionControls-content">

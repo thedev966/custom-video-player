@@ -21,7 +21,7 @@
 .videoInfo {
   display: flex;
   flex-direction: column;
-  margin: 30px 0 0 35px;
+  margin: 4% 0 0 4%;
 }
 
 .video_title {
@@ -31,6 +31,7 @@
   margin: 0;
   padding-bottom: 10px;
   letter-spacing: 0.8px;
+  transition: font-size 0.2s ease;
 }
 
 .video_author {
@@ -40,6 +41,7 @@
   letter-spacing: 0.8px;
   text-transform: uppercase;
   margin: 0;
+  transition: font-size 0.2s ease;
 }
 
 .actionControls {
@@ -200,8 +202,8 @@
   min-width: unset !important;
   min-height: unset !important;
   background-color: rgba(255, 255, 255, 0.3) !important;
-  transform: translate(4px, -40px) !important;
-  padding: 5px 12px;
+  transform: translate(4px, -42px) !important;
+  padding: 6px 16px;
 }
 
 .settingsPopover__speedLabel,
