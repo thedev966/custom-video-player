@@ -7,3 +7,5 @@ Credits: Salko a.k.a Dev
 TODO:
 
 - Make video player responsive
+
+Live preview: https://custom-react-video-player.netlify.app
