@@ -15,10 +15,8 @@ import screenfull from "screenfull";
 import Popover from "@material-ui/core/Popover";
 
 const videoPaths = {
-  SD:
-    "https://r3---sn-ncc-nwwe.googlevideo.com/videoplayback?expire=1620416506&ei=mkOVYPaeC4q5yAX4yInAAQ&ip=2a0b%3A1580%3Ad96f%3Aeb01%3Aff90%3A4267%3A1da2%3A141b&id=o-AFxxQ6FpZs1ItNk-C1PPXyaVjVC985Wa4yce-knUXVvq&itag=18&source=youtube&requiressl=yes&vprv=1&mime=video%2Fmp4&ns=pk-y1DM5Vwc7fS2I6F_8D9cF&gir=yes&clen=13315531&ratebypass=yes&dur=166.138&lmt=1499793535138046&fexp=24001373%2C24007246&c=WEB&n=CbVal2v8AbW3SYIYPlK&sparams=expire%2Cei%2Cip%2Cid%2Citag%2Csource%2Crequiressl%2Cvprv%2Cmime%2Cns%2Cgir%2Cclen%2Cratebypass%2Cdur%2Clmt&sig=AOq0QJ8wRQIhANpUfGw0v_x_SSwLEWefyibsWUlcvzLpi52cYL2nRLLUAiBKTWlTBiv4mh7Y1RvIincrZOtmmlasOXHWXzNwczTUCQ%3D%3D&cms_redirect=yes&mh=a0&mip=77.77.222.132&mm=31&mn=sn-ncc-nwwe&ms=au&mt=1620394623&mv=m&mvi=3&pl=23&lsparams=mh,mip,mm,mn,ms,mv,mvi,pl&lsig=AG3C_xAwRQIgNGlvmW5DSdX6mvFa5VbMa289rJUsPtNizBue4JupOhICIQDWOK5mvbkTVAhe-d8EpZC6bRrp8iRpIGoi-qAm1hZ_JQ%3D%3D",
-  HD:
-    "https://r3---sn-ncc-nwwe.googlevideo.com/videoplayback?expire=1620416506&ei=mkOVYPaeC4q5yAX4yInAAQ&ip=2a0b%3A1580%3Ad96f%3Aeb01%3Aff90%3A4267%3A1da2%3A141b&id=o-AFxxQ6FpZs1ItNk-C1PPXyaVjVC985Wa4yce-knUXVvq&itag=22&source=youtube&requiressl=yes&vprv=1&mime=video%2Fmp4&ns=pk-y1DM5Vwc7fS2I6F_8D9cF&cnr=14&ratebypass=yes&dur=166.138&lmt=1499793654044438&fexp=24001373%2C24007246&c=WEB&n=CbVal2v8AbW3SYIYPlK&sparams=expire%2Cei%2Cip%2Cid%2Citag%2Csource%2Crequiressl%2Cvprv%2Cmime%2Cns%2Ccnr%2Cratebypass%2Cdur%2Clmt&sig=AOq0QJ8wRQIgPyPyk3rQ1Z92QF_3aE0kfb3sKi4KNmmyiHl13bMUhhQCIQDLCgsZX_EaBQYBp4bvBjyhqLMQZlTmJA5Sjbv3plFtZw%3D%3D&cms_redirect=yes&mh=a0&mip=77.77.222.132&mm=31&mn=sn-ncc-nwwe&ms=au&mt=1620394623&mv=m&mvi=3&pl=23&lsparams=mh,mip,mm,mn,ms,mv,mvi,pl&lsig=AG3C_xAwRgIhAKq-uKkEDN8oaPwAKlL2LmAZvWCbiVnOO7CY4svf8Z6xAiEA-8ST9o37BOdAyzyAY1YWAOjA-sfSXUIh2ZYH48ueAiw%3D",
+  SD: "/videos/walden_sd.mp4",
+  HD: "/videos/walden_hd.mp4",
 };
 
 const Player = () => {
@@ -39,9 +37,8 @@ const Player = () => {
   const qualityValues = ["SD", "HD"];
   const [currentQualityIndex, setCurrentQualityIndex] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
-  const [currentTimeOnQualityChange, setCurrentTimeOnQualityChange] = useState(
-    0
-  );
+  const [currentTimeOnQualityChange, setCurrentTimeOnQualityChange] =
+    useState(0);
 
   useEffect(() => {
     // when user changes video quality, seek to the time where the video was left off
